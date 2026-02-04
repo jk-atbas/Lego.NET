@@ -1,0 +1,12 @@
+{
+	"plaforms": {
+		"win": [
+			{
+				"arch": "x64",
+				"version": "4.31.0",
+				"path": "native/win/x64/lego.exe"
+			}
+		],
+		"linux": []
+	}
+}

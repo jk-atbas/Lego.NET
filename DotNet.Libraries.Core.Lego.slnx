@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/ProjectFiles/">
+    <File Path=".gitignore" />
+    <File Path="Directory.Packages.props" />
+    <File Path="readme.md" />
+  </Folder>
+  <Project Path="src/DotNet.Libraries.Core.Lego.csproj" />
+  <Project Path="tests/DotNET.Libraries.Core.Lego.Tests/DotNET.Libraries.Core.Lego.Tests.csproj" Id="080b256d-3213-47a8-bf95-7879e7ab4614" />
+</Solution>
