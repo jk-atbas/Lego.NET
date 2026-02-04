@@ -5,5 +5,5 @@
     <File Path="readme.md" />
   </Folder>
   <Project Path="src/DotNet.Libraries.Core.Lego.csproj" />
-  <Project Path="tests/DotNET.Libraries.Core.Lego.Tests/DotNET.Libraries.Core.Lego.Tests.csproj" Id="080b256d-3213-47a8-bf95-7879e7ab4614" />
+  <Project Path="tests/DotNet.Libraries.Core.Lego.Tests/DotNet.Libraries.Core.Lego.Tests.csproj" Id="080b256d-3213-47a8-bf95-7879e7ab4614" />
 </Solution>
