@@ -4,7 +4,7 @@ using DotNet.Libraries.Core.Lego.Providers.Extensions;
 using DotNet.Libraries.Core.Lego.Tests.Infrastructure;
 using System.Runtime.InteropServices;
 
-namespace DotNET.Libraries.Core.Lego.Tests.UnitTests.SettingsTests;
+namespace DotNet.Libraries.Core.Lego.Tests.UnitTests.SettingsTests;
 
 public class LegoManifestSettingsTests
 {
