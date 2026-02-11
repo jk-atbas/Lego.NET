@@ -8,11 +8,6 @@ namespace DotNet.Libraries.Core.Lego.Tests.UnitTests.SettingsTests;
 
 public class LegoManifestSettingsTests
 {
-	[SetUp]
-	public void Setup()
-	{
-	}
-
 	[Test]
 	public void EmptyCollectionShouldReturnNoManifestEntry()
 	{

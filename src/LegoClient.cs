@@ -1,14 +1,21 @@
-using DotNet.Libraries.Core.Lego.Providers;
+using DotNet.Libraries.Core.Lego.Executors;
+using DotNet.Libraries.Core.Lego.Requests;
+using DotNet.Libraries.Core.Lego.Results;
 using Microsoft.Extensions.Logging;
-using System.IO.Abstractions;
 
 namespace DotNet.Libraries.Core.Lego;
 
 public sealed class LegoClient(
-	IFileSystem fileSystem,
-	IEnvironmentProvider environment,
-	ILegoManifestProvider manifestProvider,
-	ILogger<LegoClient>? logger = null)
+	ILegoExecutor executor,
+	ILogger<LegoClient> logger)
 {
+	public async Task<LegoExecutionResult> AcquireCertificate(ILegoRequest request, CancellationToken cancellationToken)
+	{
+		return new LegoExecutionResult(false, []);
+	}
 
+	public async Task<LegoExecutionResult> RenewCertificate(ILegoRequest request, CancellationToken cancellationToken)
+	{
+		return new LegoExecutionResult(false, []);
+	}
 }

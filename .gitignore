@@ -482,4 +482,4 @@ $RECYCLE.BIN/
 *.swp
 
 # Retain native lego folder
-!**/lego/win/x64
+!**/native/win/x64
