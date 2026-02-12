@@ -28,6 +28,9 @@ public interface ILegoRequest
 	/// Configure the environment before executing a Lego request
 	/// </summary>
 	/// <param name="secretSource">Optional secret source</param>
+	/// <param name="cancellationToken">Cancellation token</param>
 	/// <returns>The configured <see cref="RequestEnvironment"/></returns>
-	Task<RequestEnvironment> BuildRequestEnvironment(CancellationToken cancellationToken, ISecretSource? secretSource = null);
+	Task<RequestEnvironment> BuildRequestEnvironment(
+		ISecretSource? secretSource,
+		CancellationToken cancellationToken = default);
 }

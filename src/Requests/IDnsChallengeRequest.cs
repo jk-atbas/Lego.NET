@@ -1,6 +1,3 @@
-using DotNet.Libraries.Core.Lego.Requests.Environments;
-using DotNet.Libraries.Core.Lego.Secrets;
-
 namespace DotNet.Libraries.Core.Lego.Requests;
 
 /// <summary>
@@ -17,23 +14,4 @@ public interface IDnsChallengeRequest : ILegoRequest
 	/// </summary>
 	/// <remarks>See <see href="https://go-acme.github.io/lego/dns/index.html"/></remarks>
 	string DnsName { get; }
-
-	/// <summary>
-	/// Configure the lego environment before attempting the DNS challenge
-	/// </summary>
-	/// <param name="secretSource">Origin of the needed DNS challenge secrets</param>
-	/// <param name="cancellationToken">Cancellation token</param>
-	/// <returns>The configured <see cref="RequestEnvironment"/></returns>
-	Task<RequestEnvironment> BuildCommandEnvironment(ISecretSource secretSource, CancellationToken cancellationToken);
-
-	async Task<RequestEnvironment> ILegoRequest.BuildRequestEnvironment(
-		CancellationToken cancellationToken,
-		ISecretSource? source)
-	{
-		return source is null
-			? throw new ArgumentNullException(
-				nameof(source),
-				"When an actual DNS challenge is needed the secret source must exist")
-			: await BuildCommandEnvironment(source, cancellationToken);
-	}
 }

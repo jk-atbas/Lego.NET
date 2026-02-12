@@ -60,11 +60,11 @@ internal static class LegoHelpers
 			argsList.Add(((IDnsChallengeRequest) request).DnsName);
 		}
 
-		if (!string.IsNullOrWhiteSpace(environment.CertificateOutputFormat)
-			&& (environment.CertificateOutputFormat.Contains("pem", StringComparison.OrdinalIgnoreCase) ||
-				environment.CertificateOutputFormat.Contains("pfx", StringComparison.OrdinalIgnoreCase)))
+		if (!string.IsNullOrWhiteSpace(environment.CertificateFormat)
+			&& (environment.CertificateFormat.Contains("pem", StringComparison.OrdinalIgnoreCase) ||
+				environment.CertificateFormat.Contains("pfx", StringComparison.OrdinalIgnoreCase)))
 		{
-			argsList.Add($"--{environment.CertificateOutputFormat}");
+			argsList.Add($"--{environment.CertificateFormat}");
 		}
 
 		// Must be last argument

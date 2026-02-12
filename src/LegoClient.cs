@@ -10,7 +10,7 @@ namespace DotNet.Libraries.Core.Lego;
 
 public sealed class LegoClient(
 	ILegoExecutor executor,
-	ILogger<LegoClient> logger)
+	ILogger<LegoClient>? logger = null)
 {
 	/// <summary>
 	/// Initiates the process to acquire a new certificate using the specified request and secret source.
@@ -39,8 +39,8 @@ public sealed class LegoClient(
 		ISecretSource? secretSource,
 		CancellationToken cancellationToken)
 	{
-		logger.BeginScope("Lego-New Certificate");
-		logger.LogInformation("Beginning certificate acquire process");
+		logger?.BeginScope("Lego-New Certificate");
+		logger?.LogInformation("Beginning certificate acquire process");
 
 		try
 		{
@@ -48,7 +48,7 @@ public sealed class LegoClient(
 		}
 		catch (Exception e)
 		{
-			logger.LogError(e, "Error while requesting new certificate");
+			logger?.LogError(e, "Error while requesting new certificate");
 
 			return new LegoExecutionResult(false, []);
 		}
@@ -79,8 +79,8 @@ public sealed class LegoClient(
 		ISecretSource? secretSource,
 		CancellationToken cancellationToken)
 	{
-		logger.BeginScope("Lego-Renew Certificate");
-		logger.LogInformation("Beginning certificate renewal process");
+		logger?.BeginScope("Lego-Renew Certificate");
+		logger?.LogInformation("Beginning certificate renewal process");
 
 		try
 		{
@@ -88,7 +88,7 @@ public sealed class LegoClient(
 		}
 		catch (Exception e)
 		{
-			logger.LogError(e, "Error while renewing certificate was encountered");
+			logger?.LogError(e, "Error while renewing certificate was encountered");
 
 			return new LegoExecutionResult(false, []);
 		}
@@ -100,13 +100,12 @@ public sealed class LegoClient(
 		RequestType requestType,
 		CancellationToken cancellationToken)
 	{
-		RequestEnvironment requestEnvironment = await request.BuildRequestEnvironment(cancellationToken, secretSource);
+		RequestEnvironment requestEnvironment = await request.BuildRequestEnvironment(secretSource, cancellationToken);
 
 		var environment = new CommandEnvironment(
 			CreateArgsList(request, requestEnvironment, requestType),
 			requestEnvironment.Environment,
-			requestEnvironment.CertificateFolder,
-			requestEnvironment.CertificateOutputFormat);
+			requestEnvironment.CertificateFolder);
 
 		return await executor.ExecuteAsync(environment, cancellationToken);
 	}

@@ -6,13 +6,13 @@ namespace DotNet.Libraries.Core.Lego.Secrets;
 public interface ISecretSource
 {
 	/// <summary>
-	/// Retrieves a secret of the specified type.
+	/// Asynchronously retrieves a secret as a byte array.
 	/// </summary>
-	/// <typeparam name="TSecretOutput">The type of the secret to retrieve.</typeparam>
-	/// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+	/// <param name="cancellationToken">
+	/// A <see cref="CancellationToken"/> that can be used to cancel the operation.
+	/// </param>
 	/// <returns>
-	/// A task that represents the asynchronous operation.
-	/// The task result contains the secret of type <typeparamref name="TSecretOutput"/>.
+	/// A task that represents the asynchronous operation. The task result contains the secret as a byte array.
 	/// </returns>
-	Task<TSecretOutput> GetSecretAsync<TSecretOutput>(CancellationToken cancellationToken);
+	Task<byte[]> GetSecretAsync(CancellationToken cancellationToken);
 }
