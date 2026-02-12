@@ -1,4 +1,4 @@
-using DotNet.Libraries.Core.Lego.Commands;
+using DotNet.Libraries.Core.Lego.Requests.Environments;
 using DotNet.Libraries.Core.Lego.Secrets;
 
 namespace DotNet.Libraries.Core.Lego.Requests;
@@ -25,9 +25,9 @@ public interface ILegoRequest
 	string[] DomainNames { get; }
 
 	/// <summary>
-	/// Configure the environment before executing a Lego command
+	/// Configure the environment before executing a Lego request
 	/// </summary>
 	/// <param name="secretSource">Optional secret source</param>
-	/// <returns>The configured <see cref="CommandEnvironment"/></returns>
-	Task<CommandEnvironment> BuildCommandEnvironment(ISecretSource? secretSource = null);
+	/// <returns>The configured <see cref="RequestEnvironment"/></returns>
+	Task<RequestEnvironment> BuildRequestEnvironment(CancellationToken cancellationToken, ISecretSource? secretSource = null);
 }

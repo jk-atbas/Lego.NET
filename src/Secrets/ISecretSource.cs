@@ -14,5 +14,5 @@ public interface ISecretSource
 	/// A task that represents the asynchronous operation.
 	/// The task result contains the secret of type <typeparamref name="TSecretOutput"/>.
 	/// </returns>
-	Task<TSecretOutput> GetSecret<TSecretOutput>(CancellationToken cancellationToken);
+	Task<TSecretOutput> GetSecretAsync<TSecretOutput>(CancellationToken cancellationToken);
 }

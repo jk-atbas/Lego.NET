@@ -1,7 +1,7 @@
-namespace DotNet.Libraries.Core.Lego.Commands;
+namespace DotNet.Libraries.Core.Lego.Requests.Environments;
 
 /// <summary>
-/// Represents the environment in which a command is executed, including the command path, 
+/// Represents the environment in which a command is executed,
 /// its arguments, and the associated environment variables.
 /// </summary>
 /// <remarks>
@@ -9,8 +9,7 @@ namespace DotNet.Libraries.Core.Lego.Commands;
 /// folder when a certificate is renewed
 /// </remarks>
 public record CommandEnvironment(
-	string CommandPath,
-	IReadOnlyList<string> Arguments,
+	IReadOnlyCollection<string> Arguments,
 	IReadOnlyDictionary<string, string?> Environment,
 	string? CertificateFolder = null,
 	string? CertificateOutputFormat = null);
