@@ -9,6 +9,7 @@ internal static class LegoHelpers
 	{
 		New,
 		Renew,
+		Revoke,
 	}
 
 	/// <summary>
@@ -68,7 +69,15 @@ internal static class LegoHelpers
 		}
 
 		// Must be last argument
-		argsList.Add(requestType == RequestType.New ? "run" : "renew");
+		var legoCommand = requestType switch
+		{
+			RequestType.New => "run",
+			RequestType.Renew => "renew",
+			RequestType.Revoke => "revoke",
+			_ => string.Empty,
+		};
+
+		argsList.Add(legoCommand);
 
 		return argsList;
 	}

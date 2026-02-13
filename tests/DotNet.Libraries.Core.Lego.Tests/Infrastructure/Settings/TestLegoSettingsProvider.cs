@@ -3,7 +3,7 @@ using DotNet.Libraries.Core.Lego.Enums;
 using DotNet.Libraries.Core.Lego.Providers;
 using DotNet.Libraries.Core.Lego.Settings;
 
-namespace DotNet.Libraries.Core.Lego.Tests.Infrastructure;
+namespace DotNet.Libraries.Core.Lego.Tests.Infrastructure.Settings;
 
 internal sealed class TestLegoSettingsProvider(Dictionary<LegoPlatform, LegoManifestEntry[]> dict)
 	: ILegoManifestProvider

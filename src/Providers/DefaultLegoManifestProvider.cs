@@ -8,7 +8,7 @@ namespace DotNet.Libraries.Core.Lego.Providers;
 /// to supply Lego manifest settings.
 /// </summary>
 /// <remarks>
-/// This class retrieves and exposes the current Lego manifest settings 
+/// This class retrieves and exposes the current Lego manifest settings
 /// using an <see cref="IOptionsMonitor{TOptions}"/> for <see cref="LegoManifestSettings"/>.
 /// </remarks>
 public sealed class DefaultLegoManifestProvider(IOptionsMonitor<LegoManifestSettings> optionsMonitor)

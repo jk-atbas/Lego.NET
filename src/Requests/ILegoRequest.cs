@@ -17,12 +17,12 @@ public interface ILegoRequest
 	/// <summary>
 	/// Associated email address for the certificate request
 	/// </summary>
-	string EmailAddress { get; }
+	string EmailAddress { get; set; }
 
 	/// <summary>
 	/// Associated domain names for the certificate request
 	/// </summary>
-	string[] DomainNames { get; }
+	string[] DomainNames { get; set; }
 
 	/// <summary>
 	/// Configure the environment before executing a Lego request

@@ -1,7 +1,7 @@
 using DotNet.Libraries.Core.Lego.Elements;
 using DotNet.Libraries.Core.Lego.Enums;
 using DotNet.Libraries.Core.Lego.Providers.Extensions;
-using DotNet.Libraries.Core.Lego.Tests.Infrastructure;
+using DotNet.Libraries.Core.Lego.Tests.Infrastructure.Settings;
 using System.Runtime.InteropServices;
 
 namespace DotNet.Libraries.Core.Lego.Tests.UnitTests.SettingsTests;
