@@ -40,8 +40,8 @@ public static class ServiceCollectionExtensions
 				.Configure<LegoManifestSettings>(legoManifestProviderSettings)
 				.AddSingleton(fileSystem)
 				.AddSingleton(environment)
-				.AddSingleton<DefaultLegoManifestProvider>()
-				.AddSingleton<DefaultExecutor>()
+				.AddSingleton<ILegoManifestProvider, DefaultLegoManifestProvider>()
+				.AddSingleton<ILegoExecutor, DefaultExecutor>()
 				.AddSingleton<LegoClient>();
 
 			return serviceCollection;

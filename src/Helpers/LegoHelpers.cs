@@ -41,6 +41,12 @@ internal static class LegoHelpers
 			"--accept-tos",
 		};
 
+		if (!string.IsNullOrWhiteSpace(environment.LetsEncryptEndpoint))
+		{
+			argsList.Add("--server");
+			argsList.Add(environment.LetsEncryptEndpoint);
+		}
+
 		const string domainKey = "--domains";
 
 		foreach (string domainName in request.DomainNames)
