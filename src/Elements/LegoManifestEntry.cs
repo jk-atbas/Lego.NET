@@ -9,10 +9,10 @@ namespace DotNet.Libraries.Core.Lego.Elements;
 public sealed class LegoManifestEntry
 {
 	[ConfigurationKeyName("arch")]
-	public Architecture Architecture { get; set; }
+	public required Architecture Architecture { get; init; }
 
-	public Version Version { get; set; } = new(1, 0, 0);
+	public required Version? Version { get; init; }
 
 	[ConfigurationKeyName("path")]
-	public string ExecutablePath { get; set; } = string.Empty;
+	public required string ExecutablePath { get; init; }
 }

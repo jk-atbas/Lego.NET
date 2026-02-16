@@ -37,7 +37,13 @@ public static class ServiceCollectionExtensions
 			environment ??= SystemEnvironmentProvider.Instance;
 
 			serviceCollection
-				.Configure<LegoManifestSettings>(legoManifestProviderSettings)
+				.AddOptions<LegoManifestSettings>()
+				.Bind(legoManifestProviderSettings)
+				.ValidateDataAnnotations()
+				.Validate(settings => settings.Platforms.Count > 0, "At least one platform must be configured")
+				.ValidateOnStart();
+
+			serviceCollection
 				.AddSingleton(fileSystem)
 				.AddSingleton(environment)
 				.AddSingleton<ILegoManifestProvider, DefaultLegoManifestProvider>()

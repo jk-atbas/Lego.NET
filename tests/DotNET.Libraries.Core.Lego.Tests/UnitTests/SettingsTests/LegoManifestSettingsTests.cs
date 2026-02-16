@@ -118,6 +118,7 @@ public class LegoManifestSettingsTests
 		var linuxX64 = new LegoManifestEntry
 		{
 			Architecture = Architecture.X64,
+			Version = null,
 			ExecutablePath = "important path",
 		};
 
@@ -138,6 +139,7 @@ public class LegoManifestSettingsTests
 		var linuxX64 = new LegoManifestEntry
 		{
 			Architecture = Architecture.X64,
+			Version = null,
 			ExecutablePath = "important path"
 		};
 
