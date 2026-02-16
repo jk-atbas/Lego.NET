@@ -1,21 +1,18 @@
+using Microsoft.Extensions.Configuration;
 using System.Runtime.InteropServices;
-using System.Text.Json.Serialization;
 
 namespace DotNet.Libraries.Core.Lego.Elements;
 
 /// <summary>
 /// Represents an entry in the Lego manifest, containing details about the architecture, version, and executable path.
 /// </summary>
-public sealed class LegoManifestEntry(
-	Architecture architecture,
-	Version? version,
-	string path)
+public sealed class LegoManifestEntry
 {
-	[JsonPropertyName("arch")]
-	public Architecture Architecture { get; set; } = architecture;
+	[ConfigurationKeyName("arch")]
+	public Architecture Architecture { get; set; }
 
-	public Version Version { get; set; } = version ?? new Version(1, 0, 0);
+	public Version Version { get; set; } = new(1, 0, 0);
 
-	[JsonPropertyName("path")]
-	public string ExecutablePath { get; set; } = path;
+	[ConfigurationKeyName("path")]
+	public string ExecutablePath { get; set; } = string.Empty;
 }

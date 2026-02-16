@@ -1,6 +1,6 @@
 {
-	"plaforms": {
-		"win": [
+	"platforms": {
+		"windows": [
 			{
 				"arch": "x64",
 				"version": "4.31.0",

@@ -47,8 +47,19 @@ public class LegoManifestSettingsTests
 	{
 		const string testExePath = "test.exe";
 		var testVersion = new Version(1, 0, 0);
-		var linuxX64 = new LegoManifestEntry(Architecture.X64, testVersion, "some path...");
-		var linuxX86 = new LegoManifestEntry(Architecture.X86, testVersion, testExePath);
+		var linuxX64 = new LegoManifestEntry
+		{
+			Architecture = Architecture.X64,
+			Version = testVersion,
+			ExecutablePath = "some path...",
+		};
+
+		var linuxX86 = new LegoManifestEntry
+		{
+			Architecture = Architecture.X86,
+			Version = testVersion,
+			ExecutablePath = testExePath,
+		};
 
 		var baseDict = new Dictionary<LegoPlatform, LegoManifestEntry[]>
 		{
@@ -71,8 +82,19 @@ public class LegoManifestSettingsTests
 	{
 		const string testExePath = "test.exe";
 		var testVersion = new Version(1, 0, 0);
-		var linuxX86Alternate = new LegoManifestEntry(Architecture.X86, testVersion, "some path...");
-		var linuxX86 = new LegoManifestEntry(Architecture.X86, testVersion, testExePath);
+		var linuxX86Alternate = new LegoManifestEntry
+		{
+			Architecture = Architecture.X86,
+			Version = testVersion,
+			ExecutablePath = "some path...",
+		};
+
+		var linuxX86 = new LegoManifestEntry
+		{
+			Architecture = Architecture.X86,
+			Version = testVersion,
+			ExecutablePath = testExePath,
+		};
 
 		var baseDict = new Dictionary<LegoPlatform, LegoManifestEntry[]>
 		{
@@ -93,7 +115,12 @@ public class LegoManifestSettingsTests
 	[Test]
 	public void ShouldReturnNullForNotFoundArch()
 	{
-		var linuxX64 = new LegoManifestEntry(Architecture.X64, null, "important path");
+		var linuxX64 = new LegoManifestEntry
+		{
+			Architecture = Architecture.X64,
+			ExecutablePath = "important path",
+		};
+
 		var baseDict = new Dictionary<LegoPlatform, LegoManifestEntry[]>
 		{
 			{ LegoPlatform.Linux, [linuxX64] }
@@ -108,7 +135,12 @@ public class LegoManifestSettingsTests
 	[Test]
 	public void ShouldReturnNullForNotFoundPlatform()
 	{
-		var linuxX64 = new LegoManifestEntry(Architecture.X64, null, "important path");
+		var linuxX64 = new LegoManifestEntry
+		{
+			Architecture = Architecture.X64,
+			ExecutablePath = "important path"
+		};
+
 		var baseDict = new Dictionary<LegoPlatform, LegoManifestEntry[]>
 		{
 			{ LegoPlatform.Linux, [linuxX64] }
