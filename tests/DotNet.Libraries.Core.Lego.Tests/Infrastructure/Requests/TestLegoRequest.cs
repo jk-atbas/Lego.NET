@@ -1,27 +1,37 @@
 using DotNet.Libraries.Core.Lego.Requests;
 using DotNet.Libraries.Core.Lego.Requests.Environments;
 using DotNet.Libraries.Core.Lego.Secrets;
-using System.Collections.Frozen;
 
 namespace DotNet.Libraries.Core.Lego.Tests.Infrastructure.Requests;
 
-internal class TestLegoRequest : ILegoRequest
+internal class TestLegoRequest : IDnsChallengeRequest
 {
 	public string EmailAddress { get; set; } = string.Empty;
-	public string[] DomainNames { get; set; } = [];
+	public string[] DomainNames { get; set; } = ["example.test"];
+	public string DnsName => "exec";
 	public string TestDir { get; set; } = string.Empty;
-
-	private const string LegoStagingServerUrl = "https://acme-staging-v02.api.letsencrypt.org/directory";
+	public string LegoServerUrl { get; set; } = string.Empty;
+	public string LegoCaCertificates { get; set; } = string.Empty;
+	public string ExecPath { get; set; } = string.Empty;
+	public string ChallTestSrvUrl { get; set; } = string.Empty;
 
 	public Task<RequestEnvironment> BuildRequestEnvironment(
 		ISecretSource? secretSource,
 		CancellationToken cancellationToken = default)
 	{
+		var envVars = new Dictionary<string, string?>
+		{
+			{ "LEGO_CA_CERTIFICATES", LegoCaCertificates },
+			{ "EXEC_PATH", ExecPath },
+			{ "CHALLTESTSRV_URL", ChallTestSrvUrl },
+		};
+
 		return Task.FromResult(new RequestEnvironment(
-			new Dictionary<string, string?>().ToFrozenDictionary(),
+			envVars,
 			GetTempDir(),
 			null,
-			LegoStagingServerUrl));
+			LegoServerUrl,
+			["--dns.propagation-disable-ans"]));
 	}
 
 	public string GetTempDir()

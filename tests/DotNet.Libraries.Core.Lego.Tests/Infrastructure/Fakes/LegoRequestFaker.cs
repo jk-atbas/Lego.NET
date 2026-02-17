@@ -16,9 +16,5 @@ internal sealed class LegoRequestFaker : Faker<TestLegoRequest>
 		RuleFor(
 			p => p.TestDir,
 			f => f.System.DirectoryPath() + "_" + Guid.NewGuid().ToString("N").Replace("/", string.Empty));
-
-		RuleFor(
-			p => p.DomainNames,
-			f => [f.Internet.DomainName(), f.Internet.DomainName()]);
 	}
 }

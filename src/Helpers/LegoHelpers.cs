@@ -74,13 +74,19 @@ internal static class LegoHelpers
 			argsList.Add($"--{environment.CertificateFormat}");
 		}
 
+		// Add extra args
+		if (environment.ExtraArgs?.Length > 0)
+		{
+			argsList.AddRange(environment.ExtraArgs);
+		}
+
 		// Must be last argument
 		var legoCommand = requestType switch
 		{
 			RequestType.New => "run",
 			RequestType.Renew => "renew",
 			RequestType.Revoke => "revoke",
-			_ => string.Empty,
+			_ => throw new ArgumentOutOfRangeException(nameof(requestType), requestType, null)
 		};
 
 		argsList.Add(legoCommand);

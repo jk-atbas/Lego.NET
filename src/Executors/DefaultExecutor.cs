@@ -49,21 +49,27 @@ internal sealed partial class DefaultExecutor(
 
 			string? certPath = null;
 
-			if (result.IsSuccess && !string.IsNullOrWhiteSpace(commandEnvironment.OutputPath))
+			if (!result.IsSuccess || string.IsNullOrWhiteSpace(commandEnvironment.OutputPath))
 			{
-				IDirectoryInfo certDir = fileSystem.DirectoryInfo.New(fileSystem.Path.Combine(
-					commandEnvironment.OutputPath,
-					"certificates"));
+				return new LegoExecutionResult(
+					result.IsSuccess,
+					[result.StandardError, result.StandardOutput],
+					certPath
+				);
+			}
 
-				if (certDir.Exists)
-				{
-					certPath = certDir.EnumerateFiles(
+			IDirectoryInfo certDir = fileSystem.DirectoryInfo.New(fileSystem.Path.Combine(
+				commandEnvironment.OutputPath,
+				"certificates"));
+
+			if (certDir.Exists)
+			{
+				certPath = certDir.EnumerateFiles(
 						string.IsNullOrWhiteSpace(commandEnvironment.CertificateFormat)
 							? "*.crt"
 							: commandEnvironment.CertificateFormat)
-						.Select(f => f.FullName)
-						.FirstOrDefault();
-				}
+					.Select(f => f.FullName)
+					.FirstOrDefault();
 			}
 
 			return new LegoExecutionResult(

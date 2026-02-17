@@ -27,14 +27,26 @@
     <PackageReference Include="NUnit3TestAdapter" />
     <PackageReference Include="System.IO.Abstractions" />
     <PackageReference Include="System.IO.Abstractions.TestingHelpers" />
+    <PackageReference Include="Testcontainers" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\DotNet.Libraries.Core.Lego.csproj" />
+    <ProjectReference Include="..\..\tools\DnsExecHelperTool\DnsExecHelperTool.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Using Include="NUnit.Framework" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="IntegrationTests\Assets\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="IntegrationTests\Assets\pebble.minica.pem">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
