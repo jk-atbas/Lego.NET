@@ -14,6 +14,8 @@ internal class TestLegoRequest : IDnsChallengeRequest
 	public string LegoCaCertificates { get; set; } = string.Empty;
 	public string ExecPath { get; set; } = string.Empty;
 	public string ChallTestSrvUrl { get; set; } = string.Empty;
+	public string? CertFormat { get; set; }
+	public string? CertPw { get; set; }
 
 	public Task<RequestEnvironment> BuildRequestEnvironment(
 		ISecretSource? secretSource,
@@ -29,9 +31,10 @@ internal class TestLegoRequest : IDnsChallengeRequest
 		return Task.FromResult(new RequestEnvironment(
 			envVars,
 			GetTempDir(),
-			null,
+			CertFormat,
 			LegoServerUrl,
-			["--dns.propagation-disable-ans"]));
+			["--dns.propagation-disable-ans"],
+			CertPw));
 	}
 
 	public string GetTempDir()

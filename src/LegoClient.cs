@@ -105,7 +105,9 @@ public sealed class LegoClient(
 		var environment = new CommandEnvironment(
 			CreateArgsList(request, requestEnvironment, requestType),
 			requestEnvironment.Environment,
-			requestEnvironment.CertificateFolder);
+			requestEnvironment.CertificateFolder,
+			requestEnvironment.CertificateFormat,
+			requestEnvironment.CertificatePassword);
 
 		return await executor.ExecuteAsync(environment, cancellationToken);
 	}

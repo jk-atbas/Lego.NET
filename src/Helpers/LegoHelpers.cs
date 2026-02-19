@@ -72,6 +72,13 @@ internal static class LegoHelpers
 				environment.CertificateFormat.Contains("pfx", StringComparison.OrdinalIgnoreCase)))
 		{
 			argsList.Add($"--{environment.CertificateFormat}");
+
+			if (environment.CertificateFormat.Contains("pfx", StringComparison.OrdinalIgnoreCase)
+				&& !string.IsNullOrWhiteSpace(environment.CertificatePassword))
+			{
+				argsList.Add("--pfx.pass");
+				argsList.Add(environment.CertificatePassword);
+			}
 		}
 
 		// Add extra args

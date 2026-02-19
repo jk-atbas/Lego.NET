@@ -8,4 +8,5 @@ public record CommandEnvironment(
 	IReadOnlyCollection<string> Arguments,
 	IReadOnlyDictionary<string, string?> Environment,
 	string? OutputPath = null,
-	string? CertificateFormat = null);
+	string? CertificateFormat = null,
+	string? CertificatePassword = null);

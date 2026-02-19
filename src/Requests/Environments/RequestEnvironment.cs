@@ -14,4 +14,5 @@ public record RequestEnvironment(
 	string? CertificateFolder = null,
 	string? CertificateFormat = null,
 	string? LetsEncryptEndpoint = null,
-	string[]? ExtraArgs = null);
+	string[]? ExtraArgs = null,
+	string? CertificatePassword = null);

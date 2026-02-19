@@ -67,7 +67,7 @@ internal sealed partial class DefaultExecutor(
 				certPath = certDir.EnumerateFiles(
 						string.IsNullOrWhiteSpace(commandEnvironment.CertificateFormat)
 							? "*.crt"
-							: commandEnvironment.CertificateFormat)
+							: $"*.{commandEnvironment.CertificateFormat}")
 					.Select(f => f.FullName)
 					.FirstOrDefault();
 			}
